@@ -13,19 +13,25 @@ export class App extends Component {
     bad: 0
   };
 
+
+
   hadleIncrement = (evt) => {
     const { name }=evt.target
      this.setState((prevState) => ({
       [name]: prevState[name] + 1,
       })
     )
+    this.countTotalFeedback();
   }
-  
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state
-    // return good + neutral + bad
-    console.log(good + neutral + bad)
+
+  // =========================================================
+   countTotalFeedback = () => {
+    const array = Object.values(this.state)
+     const totalFeedback = array.reduce((acc, item) => { return acc + item }, 1)
+     console.log(totalFeedback)    
   }
+  // =========================================================
+    
 
   render() {
     const { good, neutral, bad } = this.state
@@ -40,14 +46,15 @@ export class App extends Component {
           <FeedbackOptions onLeaveFeedback={this.hadleIncrement} />
         </Section>
         
+
         <Section title="Statistics">
           {good === 0 && neutral === 0 && bad === 0 ? <Notification message="There is no feedback" /> :
           <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivFeedback} /> }
         </Section>
         
-        
+        {/* options={this.countTotalFeedback} */}
 
-        {/* options={} */}
+        
 
         {/* <div>
           <button type="button" name="good" onClick={this.hadleIncrement}>Good</button>
