@@ -1,6 +1,7 @@
 .btn{
     margin-right: 16px;
     padding: 4px 8px;
+    text-transform:capitalize;
     font-weight: 700;
     font-size: 16px;
     letter-spacing: 0.03em;

@@ -37,6 +37,7 @@ return Object.values(this.state).reduce((acc, item) => { return acc + item }, 0)
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.hadleIncrement} />
         </Section>
 
